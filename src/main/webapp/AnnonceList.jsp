@@ -1,4 +1,4 @@
-<%@ page import="entities.Annonce" %>
+<%@ page import="models.Annonce" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: xiang

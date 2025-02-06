@@ -1,6 +1,6 @@
 package dao;
 
-import entities.Annonce;
+import models.Annonce;
 import utils.ConnectionDB;
 
 import java.sql.*;
