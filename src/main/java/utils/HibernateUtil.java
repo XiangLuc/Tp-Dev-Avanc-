@@ -1,5 +1,6 @@
 package utils;
 
+import entities.Annonce;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -8,7 +9,10 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+            return new Configuration()
+                    .configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(Annonce.class)
+                    .buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
