@@ -1,7 +1,7 @@
 package servlets;
 
-import dao.AnnonceDAO;
-import models.Annonce;
+import dao.v2.AnnonceDAOv2;
+import entities.Annonce;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class AnnonceDelete extends HttpServlet {
         int id = Integer.parseInt(idParam);
 
         try {
-            AnnonceDAO annonceDAO = new AnnonceDAO();
+            AnnonceDAOv2 annonceDAO = new AnnonceDAOv2();
             Annonce annonce = annonceDAO.find(id);
             if(annonce != null) {
                 boolean success = annonceDAO.delete(annonce);

@@ -1,7 +1,7 @@
 package servlets;
 
-import dao.AnnonceDAO;
-import models.Annonce;
+import dao.v2.AnnonceDAOv2;
+import entities.Annonce;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/annonce/liste")
@@ -18,17 +17,13 @@ public class AnnonceList extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            AnnonceDAO annonceDAO = new AnnonceDAO();
 
-            List<Annonce> annonces = annonceDAO.list();
+        AnnonceDAOv2 annonceDAO = new AnnonceDAOv2();
 
-            request.setAttribute("annonces", annonces);
+        List<Annonce> annonces = annonceDAO.list();
 
-            request.getRequestDispatcher("/AnnonceList.jsp").forward(request, response);
+        request.setAttribute("annonces", annonces);
 
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        request.getRequestDispatcher("/AnnonceList.jsp").forward(request, response);
     }
 }

@@ -1,7 +1,7 @@
 package servlets;
 
-import dao.AnnonceDAO;
-import models.Annonce;
+import dao.v2.AnnonceDAOv2;
+import entities.Annonce;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
 @WebServlet("/annonce/add")
@@ -36,12 +35,8 @@ public class AnnonceAdd extends HttpServlet {
                 new Timestamp(System.currentTimeMillis())
         );
 
-        try {
-            AnnonceDAO annonceDAO = new AnnonceDAO();
-            annonceDAO.create(annonce);
-            response.sendRedirect(request.getContextPath() + "/annonce/liste");
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        AnnonceDAOv2 annonceDAO = new AnnonceDAOv2();
+        annonceDAO.create(annonce);
+        response.sendRedirect(request.getContextPath() + "/annonce/liste");
     }
 }

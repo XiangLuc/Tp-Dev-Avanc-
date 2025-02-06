@@ -1,7 +1,7 @@
 package servlets;
 
-import dao.AnnonceDAO;
-import models.Annonce;
+import dao.v2.AnnonceDAOv2;
+import entities.Annonce;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class AnnonceUpdate extends HttpServlet {
         int id = Integer.parseInt(idParam);
 
         try {
-            AnnonceDAO annonceDAO = new AnnonceDAO();
+            AnnonceDAOv2 annonceDAO = new AnnonceDAOv2();
             Annonce annonce = annonceDAO.find(id);
 
             if (annonce != null) {
@@ -53,7 +53,7 @@ public class AnnonceUpdate extends HttpServlet {
         Annonce annonce = new Annonce(id, title, description, adress, mail, new Timestamp(System.currentTimeMillis()));
 
         try {
-            AnnonceDAO annonceDAO = new AnnonceDAO();
+            AnnonceDAOv2 annonceDAO = new AnnonceDAOv2();
             boolean success = annonceDAO.update(annonce);
 
             if (success) {
