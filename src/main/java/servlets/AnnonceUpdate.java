@@ -16,12 +16,12 @@ public class AnnonceUpdate extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String idParam = request.getParameter("id");
 
         if (idParam == null || idParam.isEmpty()) {
-            response.sendRedirect("AnnonceList");
+            response.sendRedirect("liste");
             return;
         }
 

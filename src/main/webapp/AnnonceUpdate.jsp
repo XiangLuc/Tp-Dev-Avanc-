@@ -5,7 +5,7 @@
   Time: 15:25
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="models.Annonce" %>
+<%@ page import="entities.Annonce" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
