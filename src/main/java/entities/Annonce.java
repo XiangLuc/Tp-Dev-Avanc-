@@ -28,6 +28,15 @@ public class Annonce {
     public Annonce() {
     }
 
+    public Annonce(int id, String title, String description, String adress, String mail, Timestamp date) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.adress = adress;
+        this.mail = mail;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }
